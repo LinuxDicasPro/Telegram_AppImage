@@ -59,7 +59,7 @@ test ! -e "appimagetool-x86_64.AppImage" && {
 #########
 
 link_prg="https://github.com/telegramdesktop/tdesktop/releases/download/v${version}/tsetup.${version}.tar.xz"
-link_svg="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
+link_svg="https://raw.githubusercontent.com/LinuxDicasPro/Telegram_AppImage/refs/heads/master/telegram.png"
 
 #########
 
@@ -78,7 +78,7 @@ printf "$file_prg\t["
 tar -xf "$cwd/$file_prg" --checkpoint=400 --checkpoint-action=exec='printf ='
 echo -e "]\n"
 
-wget -c -q --show-progress -O "$prg.svg" "$link_svg"
+wget -c -q --show-progress -O "$prg.png" "$link_svg"
 
 
 ####################################
@@ -106,11 +106,11 @@ rm -rf ~/.local/share/applications/org.telegram.desktop*.desktop
 
 cd \$APPDIR
 desktopfile=~/.local/share/applications/$prg.desktop
-iconfile=~/.local/share/pixmaps/$prg.svg
+iconfile=~/.local/share/icons/telegram.png
 autostart=~/.config/autostart/$prg.desktop
 
 test ! -e \"\$desktopfile\" && cp $prg.desktop ~/.local/share/applications/
-test ! -e \"\$iconfile\" && cp $prg.svg ~/.local/share/pixmaps/
+test ! -e \"\$iconfile\" && cp $prg.png ~/.local/share/icons/telegram.png
 test ! -e \"\$autostart\" && cp $prg.desktop ~/.config/autostart/
 
 if ! grep -q \"\$APPIMAGE\" \"\$desktopfile\"; then
